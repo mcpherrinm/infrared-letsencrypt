@@ -1,0 +1,269 @@
+// ISRG / Let's Encrypt -- Subscriber (Server) Certificate Profile
+// ---------------------------------------------------------------------------------------------------
+// Machine-checkable rendering of CP/CPS v6.2 (Aug 12, 2026) Section 7.1 "Subscriber (Server) Certificate
+// Profile", together with the Section 6.1.5/6.1.6 key requirements and the Section 7.1.3 algorithm
+// identifier requirements those rows point to. Precertificates are covered by isrg-precertificate.json5.
+//
+// Where the CP/CPS defers to "the profiles with the same names found in Section 7.1.2 of the Baseline
+// Requirements" (e.g. extension criticality the CP/CPS table doesn't spell out), the BR value is used.
+{
+  $schema: "https://infrared.turbolightsolutions.com/infrared-profile-2026-10-02.schema.json",
+  type: "certificate",
+  name: "isrg-subscriber-server-certificate",
+  version: "0.1.0",
+  description: "Domain Validated TLS server certificates issued by ISRG (Let's Encrypt) Subordinate CAs under the ISRG CP/CPS",
+  org: "isrg",
+  spec: "cp-cps",
+
+  $defs: {
+    // ---- Signature AlgorithmIdentifiers (CP/CPS 7.1.3.2 -> BR 7.1.3.2) ----
+    // ISRG Subordinate CAs are RSA-2048 or ECDSA P-384 (CP/CPS 6.1.5), so these are the BR 7.1.3.2
+    // encodings an ISRG Issuing CA can produce: any BR RSA encoding, or ECDSA with SHA-384.
+    sha256WithRSAEncryption: { value: "300d06092a864886f70d01010b0500", description: "RSASSA-PKCS1-v1_5 with SHA-256" },
+    sha384WithRSAEncryption: { value: "300d06092a864886f70d01010c0500", description: "RSASSA-PKCS1-v1_5 with SHA-384" },
+    sha512WithRSAEncryption: { value: "300d06092a864886f70d01010d0500", description: "RSASSA-PKCS1-v1_5 with SHA-512" },
+    rsassaPssSha256: {
+      value: "304106092a864886f70d01010a3034a00f300d06096086480165030402010500a11c301a06092a864886f70d010108300d06096086480165030402010500a203020120",
+      description: "RSASSA-PSS with SHA-256, MGF-1 with SHA-256, and a salt length of 32 bytes",
+    },
+    rsassaPssSha384: {
+      value: "304106092a864886f70d01010a3034a00f300d06096086480165030402020500a11c301a06092a864886f70d010108300d06096086480165030402020500a203020130",
+      description: "RSASSA-PSS with SHA-384, MGF-1 with SHA-384, and a salt length of 48 bytes",
+    },
+    rsassaPssSha512: {
+      value: "304106092a864886f70d01010a3034a00f300d06096086480165030402030500a11c301a06092a864886f70d010108300d06096086480165030402030500a203020140",
+      description: "RSASSA-PSS with SHA-512, MGF-1 with SHA-512, and a salt length of 64 bytes",
+    },
+    ecdsaWithSha384: { value: "300a06082a8648ce3d040303", description: "ECDSA with SHA-384 (P-384 Issuing CA keys)" },
+
+    // ---- SubjectPublicKeyInfo AlgorithmIdentifiers (CP/CPS 6.1.5, 7.1.3.1 -> BR 7.1.3.1) ----
+    rsaEncryption: { value: "300d06092a864886f70d0101010500", description: "RSA" },
+    ecPublicKeyP256: { value: "301306072a8648ce3d020106082a8648ce3d030107", description: "ECDSA on NIST P-256" },
+    ecPublicKeyP384: { value: "301006072a8648ce3d020106052b81040022", description: "ECDSA on NIST P-384" },
+    ecPublicKeyP521: { value: "301006072a8648ce3d020106052b81040023", description: "ECDSA on NIST P-521" },
+
+    // ---- OIDs ----
+    cabfDomainValidated: { value: "2.23.140.1.2.1", description: "Baseline Requirements Domain Validated Reserved Policy Identifier" },
+    idKpServerAuth: { value: "1.3.6.1.5.5.7.3.1", description: "id-kp-serverAuth" },
+
+    // ---- ISRG Issuing CAs (subordinate CAs that issue Subscriber Certificates) ----
+    // DER encoding of each Issuing CA's subject Name. A Subscriber Certificate's issuer is byte-for-byte
+    // identical to one of these.
+    issuerDnE5: { value: "3032310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310b3009060355040313024535", description: "C=US, O=Let's Encrypt, CN=E5" },
+    issuerDnE6: { value: "3032310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310b3009060355040313024536", description: "C=US, O=Let's Encrypt, CN=E6" },
+    issuerDnE7: { value: "3032310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310b3009060355040313024537", description: "C=US, O=Let's Encrypt, CN=E7" },
+    issuerDnE8: { value: "3032310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310b3009060355040313024538", description: "C=US, O=Let's Encrypt, CN=E8" },
+    issuerDnE9: { value: "3032310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310b3009060355040313024539", description: "C=US, O=Let's Encrypt, CN=E9" },
+    issuerDnR10: { value: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303523130", description: "C=US, O=Let's Encrypt, CN=R10" },
+    issuerDnR11: { value: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303523131", description: "C=US, O=Let's Encrypt, CN=R11" },
+    issuerDnR12: { value: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303523132", description: "C=US, O=Let's Encrypt, CN=R12" },
+    issuerDnR13: { value: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303523133", description: "C=US, O=Let's Encrypt, CN=R13" },
+    issuerDnR14: { value: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303523134", description: "C=US, O=Let's Encrypt, CN=R14" },
+    issuerDnYE1: { value: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303594531", description: "C=US, O=Let's Encrypt, CN=YE1" },
+    issuerDnYE2: { value: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303594532", description: "C=US, O=Let's Encrypt, CN=YE2" },
+    issuerDnYE3: { value: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303594533", description: "C=US, O=Let's Encrypt, CN=YE3" },
+    issuerDnYR1: { value: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595231", description: "C=US, O=Let's Encrypt, CN=YR1" },
+    issuerDnYR2: { value: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595232", description: "C=US, O=Let's Encrypt, CN=YR2" },
+    issuerDnYR3: { value: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595233", description: "C=US, O=Let's Encrypt, CN=YR3" },
+
+    // subjectKeyIdentifier of each Issuing CA Certificate. A Subscriber Certificate's
+    // authorityKeyIdentifier.keyIdentifier is byte-for-byte identical to one of these.
+    skidE5: { value: "9f2b5fcf3c214f9d04b7ed2b2cc4c6708bd2d70d", description: "E5" },
+    skidE6: { value: "9327469803a951688e98d6c44248db23bf5894d2", description: "E6" },
+    skidE7: { value: "ae489edc871d44a06fdaa2e560740478c29c0080", description: "E7" },
+    skidE8: { value: "8f0d13a2f62e7ed1506c3318385d598e237291ca", description: "E8" },
+    skidE9: { value: "5d77d14dac4d227859b286598e431cb764591341", description: "E9" },
+    skidR10: { value: "bbbcc347a5e4bca9c6c3a4720c108da235e1c8e8", description: "R10" },
+    skidR11: { value: "c5cf46a4eaf4c3c07a6c95c42db05e922f26e3b9", description: "R11" },
+    skidR12: { value: "00b529f22d8e6f31e89b4cad783efadce90cd1d2", description: "R12" },
+    skidR13: { value: "e7ab9f0f2c33a053d35e4f78c8b2840e3bd69233", description: "R13" },
+    skidR14: { value: "e51095d8b60c51d7a77235630a54686e0653f8fb", description: "R14" },
+    skidYE1: { value: "bb20ca470bfed7e59cf98f092aa38c3745b1bcd8", description: "YE1" },
+    skidYE2: { value: "b959f28ecf22f086d33748ff761418ba82d85587", description: "YE2" },
+    skidYE3: { value: "f6a27ed65e236fdddd4546611e821575cdf1e68e", description: "YE3" },
+    skidYR1: { value: "1f2f35be461482cd40b1ae792c5578faf7d468fb", description: "YR1" },
+    skidYR2: { value: "40152d2679ed32209edf9a721dd6321f810c810c", description: "YR2" },
+    skidYR3: { value: "696529f933f809b642d5e1f3b5b59d1f5f7a227c", description: "YR3" },
+
+    // Lower-cased Issuing CA names as they appear in AIA / CRL DP hostnames.
+    issuingCaLabel: "(e[5-9]|r1[0-4]|y[er][1-3])",
+  },
+
+  content: {
+    version: { valueEq: "v3", clause: "7.1.1" },
+
+    serialNumber: {
+      clause: "7.1",
+      description: "More than 100 bits of output from a CSPRNG, optionally with additional non-random bits.",
+      // Randomness itself can't be checked here.
+      valueGt: 0,
+    },
+
+    signatureAlgorithm: {
+      clause: "7.1.3.2",
+      algorithms: [
+        "%sha256WithRSAEncryption%",
+        "%sha384WithRSAEncryption%",
+        "%sha512WithRSAEncryption%",
+        "%rsassaPssSha256%",
+        "%rsassaPssSha384%",
+        "%rsassaPssSha512%",
+        "%ecdsaWithSha384%",
+      ],
+    },
+
+    signatureValue: { description: "A signature appropriate to the signatureAlgorithm field." },
+
+    validity: {
+      clause: "7.1",
+      // At most 100 days. RFC 5280 counts the validity period inclusively (notAfter - notBefore + 1s),
+      // so the raw difference must be strictly below 100 * 86400 seconds.
+      validityPeriodSecs: { valueLt: 8640000, description: "At most 100 days." },
+    },
+
+    subjectPublicKey: {
+      algorithm: {
+        clause: "7.1.3.1",
+        algorithms: ["%rsaEncryption%", "%ecPublicKeyP256%", "%ecPublicKeyP384%", "%ecPublicKeyP521%"],
+      },
+      rsa: {
+        modulusLength: { clause: "6.1.5", valueOneOf: [{ eq: 2048 }, { eq: 3072 }, { eq: 4096 }] },
+        exponent: { clause: "6.1.6", valueEq: 65537 },
+      },
+    },
+
+    issuer: {
+      description: "Byte-for-byte identical to the subject field of the Issuing CA.",
+      tlvHexOneOf: [
+        { eq: "%issuerDnE5%" }, { eq: "%issuerDnE6%" }, { eq: "%issuerDnE7%" }, { eq: "%issuerDnE8%" }, { eq: "%issuerDnE9%" },
+        { eq: "%issuerDnR10%" }, { eq: "%issuerDnR11%" }, { eq: "%issuerDnR12%" }, { eq: "%issuerDnR13%" }, { eq: "%issuerDnR14%" },
+        { eq: "%issuerDnYE1%" }, { eq: "%issuerDnYE2%" }, { eq: "%issuerDnYE3%" },
+        { eq: "%issuerDnYR1%" }, { eq: "%issuerDnYR2%" }, { eq: "%issuerDnYR3%" },
+      ],
+      rdns: [
+        { countryName: { valueEq: "US" } },
+        { organizationName: { valueEq: "Let's Encrypt" } },
+        { commonName: { valueMatch: "^(E[5-9]|R1[0-4]|Y[ER][1-3])$" } },
+      ],
+    },
+
+    // CP/CPS 7.1.4: no subject attributes other than commonName.
+    subject: {
+      description: "CN omitted, or optionally contains one of the values from the Subject Alternative Name extension. No other attributes are included (Section 7.1.4).",
+      size: { max: 1 },
+      rdns: [
+        {
+          commonName: {
+            alwaysPresent: false,
+            // A dNSName or the text form of an iPAddress; matching it against the SAN isn't expressible here.
+            valueMatch: "^[A-Za-z0-9*._:-]{1,64}$",
+          },
+        },
+      ],
+    },
+
+    extensions: {
+      // The CP/CPS doesn't mandate an extension order.
+      ordered: false,
+      entries: [
+        {
+          authorityInformationAccess: {
+            clause: "7.1",
+            critical: false,
+            description: "Contains the HTTP URI of the Issuing CA's Certificate.",
+            accessDescriptions: [
+              {
+                method: "caIssuers",
+                accessLocation: { type: "uniformResourceIdentifier", valueMatch: "^http://%issuingCaLabel%\\.i\\.lencr\\.org/$" },
+              },
+            ],
+          },
+        },
+        {
+          authorityKeyIdentifier: {
+            clause: "7.1",
+            critical: false,
+            description: "Contains a keyIdentifier byte-for-byte identical to the subjectKeyIdentifier of the Issuing CA.",
+            keyIdentifier: {
+              valueHexOneOf: [
+                { eq: "%skidE5%" }, { eq: "%skidE6%" }, { eq: "%skidE7%" }, { eq: "%skidE8%" }, { eq: "%skidE9%" },
+                { eq: "%skidR10%" }, { eq: "%skidR11%" }, { eq: "%skidR12%" }, { eq: "%skidR13%" }, { eq: "%skidR14%" },
+                { eq: "%skidYE1%" }, { eq: "%skidYE2%" }, { eq: "%skidYE3%" },
+                { eq: "%skidYR1%" }, { eq: "%skidYR2%" }, { eq: "%skidYR3%" },
+              ],
+            },
+          },
+        },
+        { basicConstraints: { clause: "7.1", critical: true, ca: false } },
+        {
+          certificatePolicies: {
+            clause: "7.1",
+            critical: false,
+            policies: [{ policyIdentifier: "%cabfDomainValidated%" }],
+          },
+        },
+        {
+          crlDistributionPoints: {
+            clause: "7.1",
+            critical: false,
+            description: "Contains the HTTP URI of a CRL issued by the Issuing CA whose scope includes this certificate.",
+            distributionPoints: [
+              {
+                distributionPoint: {
+                  fullName: {
+                    exact: [{ type: "uniformResourceIdentifier", valueMatch: "^http://%issuingCaLabel%\\.c\\.lencr\\.org/[0-9]+\\.crl$" }],
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          extendedKeyUsage: {
+            clause: "7.1",
+            critical: false,
+            purposes: [{ oid: "%idKpServerAuth%" }],
+          },
+        },
+        {
+          keyUsage: {
+            clause: "7.1",
+            critical: true,
+            description: "keyEncipherment is only set for RSA keys.",
+            bits: [
+              { bit: "digitalSignature" },
+              { bit: "keyEncipherment", alwaysPresent: false },
+            ],
+          },
+        },
+        {
+          sctList: {
+            clause: "7.1",
+            critical: false,
+            description: "Contains at least two SCTs from logs run by different operators.",
+          },
+        },
+        {
+          subjectAltName: {
+            clause: "7.1",
+            description: "Critical if the subject commonName is omitted.",
+            names: {
+              pattern: [{ type: "dNSName" }, { type: "iPAddress" }],
+              size: { min: 1, max: 100 },
+            },
+          },
+        },
+        {
+          subjectKeyIdentifier: {
+            clause: "7.1",
+            alwaysPresent: false,
+            critical: false,
+            description: "Optionally contains a truncated hash of the subjectPublicKey, per Section 2(1) of RFC 7093.",
+            // A 160-bit (20-byte) truncated hash.
+            valueHexMatch: "^[0-9a-f]{40}$",
+          },
+        },
+      ],
+    },
+  },
+}
