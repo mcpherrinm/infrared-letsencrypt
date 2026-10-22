@@ -1,0 +1,178 @@
+ACCEPTED 00-baseline.der  by isrg-classic-cn-rsa-final
+CAUGHT   01-validity-91-days.der  (findings from isrg-classic-cn-rsa-final)
+    validity.validityPeriodSecs:value_lte_violated @ validity : valueLte "7776000" violated (actual: "7862400")
+CAUGHT   02-validity-90-days-plus-1s.der  (findings from isrg-classic-cn-rsa-final)
+    validity.validityPeriodSecs:value_lte_violated @ validity : valueLte "7776000" violated (actual: "7776001")
+CAUGHT   03-eku-clientauth.der  (findings from isrg-classic-cn-rsa-final)
+    :undisclosed_field @ extensions.1.extnValue.ExtKeyUsageSyntax.1 : —
+CAUGHT   04-aia-ocsp-added.der  (findings from isrg-classic-cn-rsa-final)
+    :undisclosed_field @ extensions.5.extnValue.AuthorityInfoAccessSyntax.0 : —
+    :undisclosed_field @ extensions.5.extnValue.AuthorityInfoAccessSyntax.0.accessMethod : —
+    :undisclosed_field @ extensions.5.extnValue.AuthorityInfoAccessSyntax.0.accessLocation : —
+CAUGHT   05-policy-ov.der  (findings from isrg-classic-cn-rsa-final)
+    :undisclosed_field @ extensions.7.extnValue.CertificatePolicies.0 : —
+    :undisclosed_field @ extensions.7.extnValue.CertificatePolicies.0.policyIdentifier : —
+    extensions.certificatePolicies(2.23.140.1.2.1):required_member_not_found @ extensions.7.extnValue.CertificatePolicies : required member "extensions.certificatePolicies(2.23.140.1.2.1)" not found
+CAUGHT   06-policy-cps-qualifier.der  (findings from isrg-classic-cn-rsa-final)
+    :undisclosed_field @ extensions.7.extnValue.CertificatePolicies.0.policyQualifiers : —
+    :undisclosed_field @ extensions.7.extnValue.CertificatePolicies.0.policyQualifiers.0 : —
+    :undisclosed_field @ extensions.7.extnValue.CertificatePolicies.0.policyQualifiers.0.policyQualifierId : —
+    :undisclosed_field @ extensions.7.extnValue.CertificatePolicies.0.policyQualifiers.0.qualifier : —
+CAUGHT   07-aki-unknown.der  (findings from isrg-classic-cn-rsa-final)
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "1f2f35be461482cd40b1ae792c5578faf7d468fb" violated (actual: "1111111111111111111111111111111111111111")
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "40152d2679ed32209edf9a721dd6321f810c810c" violated (actual: "1111111111111111111111111111111111111111")
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "696529f933f809b642d5e1f3b5b59d1f5f7a227c" violated (actual: "1111111111111111111111111111111111111111")
+CAUGHT   08-issuer-retired-r3.der  (findings from isrg-classic-cn-rsa-final)
+    issuer.commonName:value_match_violated @ issuer.2.0.value : valueMatch "^YR[1-3]$" violated (actual: "R3")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595231" violated (actual: "3032310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310b3009060355040313025233")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595232" violated (actual: "3032310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310b3009060355040313025233")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595233" violated (actual: "3032310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310b3009060355040313025233")
+CAUGHT   09-issuer-utf8-encoding.der  (findings from isrg-classic-cn-rsa-final)
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595231" violated (actual: "3033310b300906035504061302555331163014060355040a0c0d4c6574277320456e6372797074310c300a06035504030c03595231")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595232" violated (actual: "3033310b300906035504061302555331163014060355040a0c0d4c6574277320456e6372797074310c300a06035504030c03595231")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595233" violated (actual: "3033310b300906035504061302555331163014060355040a0c0d4c6574277320456e6372797074310c300a06035504030c03595231")
+CAUGHT   10-subject-has-org.der  (findings from isrg-classic-cn-rsa-final)
+    :undisclosed_field @ subject.0 : —
+    :undisclosed_field @ subject.0.0 : —
+    :undisclosed_field @ subject.0.0.type : —
+    :undisclosed_field @ subject.0.0.value : —
+    subject:size_violated @ subject : size violated: expected exactly 1, found 2
+CAUGHT   11-rsa-1024.der  (findings from isrg-classic-cn-rsa-final)
+    6.1.5:value_eq_violated @ subjectPublicKeyInfo.subjectPublicKey.RSAPublicKey.modulus : valueEq "0800" violated (actual: "0400")
+    6.1.5:value_eq_violated @ subjectPublicKeyInfo.subjectPublicKey.RSAPublicKey.modulus : valueEq "0c00" violated (actual: "0400")
+    6.1.5:value_eq_violated @ subjectPublicKeyInfo.subjectPublicKey.RSAPublicKey.modulus : valueEq "1000" violated (actual: "0400")
+CAUGHT   12-rsa-exponent-3.der  (findings from isrg-classic-cn-rsa-final)
+    6.1.6:value_eq_violated @ subjectPublicKeyInfo.subjectPublicKey.RSAPublicKey.publicExponent : valueEq "010001" violated (actual: "03")
+CAUGHT   13-ec-p224.der  (findings from isrg-classic-cn-ecdsa-final)
+    7.1.3.1:algorithms_violated @ subjectPublicKeyInfo.algorithm : algorithms violated: encoding not in the allowed set (actual: "301006072a8648ce3d020106052b81040021")
+    7.1.3.2:algorithms_violated @ signature : algorithms violated: encoding not in the allowed set (actual: "300d06092a864886f70d01010b0500")
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0 : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0.distributionPoint : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0.distributionPoint.0 : —
+    extensions.authorityInformationAccess.caIssuers.accessLocation.uniformResourceIdentifier:value_match_violated @ extensions.5.extnValue.AuthorityInfoAccessSyntax.0.accessLocation : valueMatch "^http://ye[1-3]\.i\.lencr\.org/$" violated (actual: "http://yr1.i.lencr.org/")
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "bb20ca470bfed7e59cf98f092aa38c3745b1bcd8" violated (actual: "1f2f35be461482cd40b1ae792c5578faf7d468fb")
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "b959f28ecf22f086d33748ff761418ba82d85587" violated (actual: "1f2f35be461482cd40b1ae792c5578faf7d468fb")
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "f6a27ed65e236fdddd4546611e821575cdf1e68e" violated (actual: "1f2f35be461482cd40b1ae792c5578faf7d468fb")
+    extensions.crlDistributionPoints.distributionPoints(0):required_member_not_found @ extensions.8.extnValue.CRLDistributionPoints : required member "extensions.crlDistributionPoints.distributionPoints(0)" not found
+    extensions.keyUsage:bits_violated @ extensions.0.extnValue.KeyUsage : bits violated: disallowed bit(s) asserted: keyEncipherment
+    issuer.commonName:value_match_violated @ issuer.2.0.value : valueMatch "^YE[1-3]$" violated (actual: "YR1")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303594531" violated (actual: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595231")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303594532" violated (actual: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595231")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303594533" violated (actual: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595231")
+CAUGHT   14-ec-secp256k1.der  (findings from isrg-classic-cn-ecdsa-final)
+    7.1.3.1:algorithms_violated @ subjectPublicKeyInfo.algorithm : algorithms violated: encoding not in the allowed set (actual: "301006072a8648ce3d020106052b8104000a")
+    7.1.3.2:algorithms_violated @ signature : algorithms violated: encoding not in the allowed set (actual: "300d06092a864886f70d01010b0500")
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0 : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0.distributionPoint : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0.distributionPoint.0 : —
+    extensions.authorityInformationAccess.caIssuers.accessLocation.uniformResourceIdentifier:value_match_violated @ extensions.5.extnValue.AuthorityInfoAccessSyntax.0.accessLocation : valueMatch "^http://ye[1-3]\.i\.lencr\.org/$" violated (actual: "http://yr1.i.lencr.org/")
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "bb20ca470bfed7e59cf98f092aa38c3745b1bcd8" violated (actual: "1f2f35be461482cd40b1ae792c5578faf7d468fb")
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "b959f28ecf22f086d33748ff761418ba82d85587" violated (actual: "1f2f35be461482cd40b1ae792c5578faf7d468fb")
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "f6a27ed65e236fdddd4546611e821575cdf1e68e" violated (actual: "1f2f35be461482cd40b1ae792c5578faf7d468fb")
+    extensions.crlDistributionPoints.distributionPoints(0):required_member_not_found @ extensions.8.extnValue.CRLDistributionPoints : required member "extensions.crlDistributionPoints.distributionPoints(0)" not found
+    extensions.keyUsage:bits_violated @ extensions.0.extnValue.KeyUsage : bits violated: disallowed bit(s) asserted: keyEncipherment
+    issuer.commonName:value_match_violated @ issuer.2.0.value : valueMatch "^YE[1-3]$" violated (actual: "YR1")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303594531" violated (actual: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595231")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303594532" violated (actual: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595231")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303594533" violated (actual: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595231")
+CAUGHT   15-crl-https.der  (findings from isrg-classic-cn-rsa-final)
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0 : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0.distributionPoint : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0.distributionPoint.0 : —
+    extensions.crlDistributionPoints.distributionPoints(0):required_member_not_found @ extensions.8.extnValue.CRLDistributionPoints : required member "extensions.crlDistributionPoints.distributionPoints(0)" not found
+CAUGHT   16-crl-two-urls.der  (findings from isrg-classic-cn-rsa-final)
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0 : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0.distributionPoint : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0.distributionPoint.0 : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0.distributionPoint.1 : —
+    extensions.crlDistributionPoints.distributionPoints(0):required_member_not_found @ extensions.8.extnValue.CRLDistributionPoints : required member "extensions.crlDistributionPoints.distributionPoints(0)" not found
+CAUGHT   17-ca-issuers-wrong-host.der  (findings from isrg-classic-cn-rsa-final)
+    extensions.authorityInformationAccess.caIssuers.accessLocation.uniformResourceIdentifier:value_match_violated @ extensions.5.extnValue.AuthorityInfoAccessSyntax.0.accessLocation : valueMatch "^http://yr[1-3]\.i\.lencr\.org/$" violated (actual: "http://x1.i.lencr.org/")
+CAUGHT   18-basic-constraints-ca.der  (findings from isrg-classic-cn-rsa-final)
+    7.1:ca_violated @ extensions.2.extnValue.BasicConstraints : ca "false" violated (actual: "true")
+CAUGHT   19-ku-missing-digitalsignature.der  (findings from isrg-classic-cn-rsa-final)
+    extensions.keyUsage.digitalSignature:required_member_not_found @ — : required member "extensions.keyUsage.digitalSignature" not found
+CAUGHT   20-ku-noncritical.der  (findings from isrg-classic-cn-rsa-final)
+    7.1:critical_violated @ extensions.0 : critical "true" violated (actual: "false")
+    extensions.keyUsage.keyEncipherment:required_member_not_found @ — : required member "extensions.keyUsage.keyEncipherment" not found
+CAUGHT   21-san-101-names.der  (findings from isrg-classic-cn-rsa-final)
+    extensions.subjectAltName.names:size_violated @ extensions.6.extnValue.SubjectAltName : size violated: expected between 1 and 100, found 101
+CAUGHT   22-san-email.der  (findings from isrg-classic-cn-rsa-final)
+    extensions.subjectAltName.names.pattern.dNSName:type_violated @ extensions.6.extnValue.SubjectAltName.1 : type "dNSName" violated (actual: "rfc822Name")
+CAUGHT   24-must-staple-extension.der  (findings from isrg-classic-cn-rsa-final)
+    :undisclosed_field @ extensions.10 : —
+    :undisclosed_field @ extensions.10.extnID : —
+    :undisclosed_field @ extensions.10.extnValue : —
+    :undisclosed_field @ extensions.10.extnValue. : —
+    :undisclosed_field @ extensions.10.extnValue.. : —
+CAUGHT   25-sha224-signature.der  (findings from isrg-classic-cn-rsa-final)
+    7.1.3.2:algorithms_violated @ signature : algorithms violated: encoding not in the allowed set (actual: "300d06092a864886f70d01010e0500")
+CAUGHT   26-no-sct-no-poison.der  (findings from isrg-classic-cn-rsa-final)
+    7.1:required_member_not_found @ extensions : required member "extensions.sctList" not found
+CAUGHT   27-both-sct-and-poison.der  (findings from isrg-classic-cn-rsa-final)
+    :undisclosed_field @ extensions.10 : —
+    :undisclosed_field @ extensions.10.extnID : —
+    :undisclosed_field @ extensions.10.critical : —
+    :undisclosed_field @ extensions.10.extnValue : —
+    :undisclosed_field @ extensions.10.extnValue.Null : —
+CAUGHT   28-ec-key-with-keyencipherment.der  (findings from isrg-classic-cn-ecdsa-final)
+    7.1.3.2:algorithms_violated @ signature : algorithms violated: encoding not in the allowed set (actual: "300d06092a864886f70d01010b0500")
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0 : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0.distributionPoint : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0.distributionPoint.0 : —
+    extensions.authorityInformationAccess.caIssuers.accessLocation.uniformResourceIdentifier:value_match_violated @ extensions.5.extnValue.AuthorityInfoAccessSyntax.0.accessLocation : valueMatch "^http://ye[1-3]\.i\.lencr\.org/$" violated (actual: "http://yr1.i.lencr.org/")
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "bb20ca470bfed7e59cf98f092aa38c3745b1bcd8" violated (actual: "1f2f35be461482cd40b1ae792c5578faf7d468fb")
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "b959f28ecf22f086d33748ff761418ba82d85587" violated (actual: "1f2f35be461482cd40b1ae792c5578faf7d468fb")
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "f6a27ed65e236fdddd4546611e821575cdf1e68e" violated (actual: "1f2f35be461482cd40b1ae792c5578faf7d468fb")
+    extensions.crlDistributionPoints.distributionPoints(0):required_member_not_found @ extensions.8.extnValue.CRLDistributionPoints : required member "extensions.crlDistributionPoints.distributionPoints(0)" not found
+    extensions.keyUsage:bits_violated @ extensions.0.extnValue.KeyUsage : bits violated: disallowed bit(s) asserted: keyEncipherment
+    issuer.commonName:value_match_violated @ issuer.2.0.value : valueMatch "^YE[1-3]$" violated (actual: "YR1")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303594531" violated (actual: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595231")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303594532" violated (actual: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595231")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303594533" violated (actual: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595231")
+CAUGHT   29-no-cn-san-noncritical.der  (findings from isrg-classic-nocn-rsa-final)
+    7.1:critical_violated @ extensions.6 : critical "true" violated (actual: "false")
+ACCEPTED 30-cn-not-in-san.der  by isrg-classic-cn-rsa-final
+CAUGHT   31-crl-from-other-issuer.der  (findings from isrg-classic-cn-rsa-final)
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0 : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0.distributionPoint : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0.distributionPoint.0 : —
+    extensions.crlDistributionPoints.distributionPoints(0):required_member_not_found @ extensions.8.extnValue.CRLDistributionPoints : required member "extensions.crlDistributionPoints.distributionPoints(0)" not found
+CAUGHT   32-skid-sha256-full.der  (findings from isrg-classic-cn-rsa-final)
+    7.1:value_hex_match_violated @ extensions.3.extnValue.SubjectKeyIdentifier : valueHexMatch "^[0-9a-f]{40}$" violated (actual: "2222222222222222222222222222222222222222222222222222222222222222")
+CAUGHT   33-classic-ip-san.der  (findings from isrg-classic-cn-rsa-final)
+    extensions.subjectAltName.names.pattern.dNSName:type_violated @ extensions.6.extnValue.SubjectAltName.1 : type "dNSName" violated (actual: "iPAddress")
+CAUGHT   34-classic-rsa-no-keyencipherment.der  (findings from isrg-classic-cn-rsa-final)
+    extensions.keyUsage.keyEncipherment:required_member_not_found @ — : required member "extensions.keyUsage.keyEncipherment" not found
+CAUGHT   35-cn-with-critical-san.der  (findings from isrg-classic-cn-rsa-final)
+    7.1:critical_violated @ extensions.6 : critical "false" violated (actual: "true")
+CAUGHT   36-classic-no-skid.der  (findings from isrg-classic-cn-rsa-final)
+    7.1:required_member_not_found @ extensions : required member "extensions.subjectKeyIdentifier" not found
+CAUGHT   90-real-expired-clientauth-E8-final.der  (findings from isrg-classic-cn-ecdsa-final)
+    :undisclosed_field @ extensions.1.extnValue.ExtKeyUsageSyntax.1 : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0 : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0.distributionPoint : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0.distributionPoint.0 : —
+    extensions.authorityInformationAccess.caIssuers.accessLocation.uniformResourceIdentifier:value_match_violated @ extensions.5.extnValue.AuthorityInfoAccessSyntax.0.accessLocation : valueMatch "^http://ye[1-3]\.i\.lencr\.org/$" violated (actual: "http://e8.i.lencr.org/")
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "bb20ca470bfed7e59cf98f092aa38c3745b1bcd8" violated (actual: "8f0d13a2f62e7ed1506c3318385d598e237291ca")
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "b959f28ecf22f086d33748ff761418ba82d85587" violated (actual: "8f0d13a2f62e7ed1506c3318385d598e237291ca")
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "f6a27ed65e236fdddd4546611e821575cdf1e68e" violated (actual: "8f0d13a2f62e7ed1506c3318385d598e237291ca")
+    extensions.crlDistributionPoints.distributionPoints(0):required_member_not_found @ extensions.8.extnValue.CRLDistributionPoints : required member "extensions.crlDistributionPoints.distributionPoints(0)" not found
+    issuer.commonName:value_match_violated @ issuer.2.0.value : valueMatch "^YE[1-3]$" violated (actual: "E8")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303594531" violated (actual: "3032310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310b3009060355040313024538")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303594532" violated (actual: "3032310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310b3009060355040313024538")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303594533" violated (actual: "3032310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310b3009060355040313024538")
+CAUGHT   91-real-expired-clientauth-R12-precert.der  (findings from isrg-classic-cn-rsa-precert)
+    :undisclosed_field @ extensions.1.extnValue.ExtKeyUsageSyntax.1 : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0 : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0.distributionPoint : —
+    :undisclosed_field @ extensions.8.extnValue.CRLDistributionPoints.0.distributionPoint.0 : —
+    extensions.authorityInformationAccess.caIssuers.accessLocation.uniformResourceIdentifier:value_match_violated @ extensions.5.extnValue.AuthorityInfoAccessSyntax.0.accessLocation : valueMatch "^http://yr[1-3]\.i\.lencr\.org/$" violated (actual: "http://r12.i.lencr.org/")
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "1f2f35be461482cd40b1ae792c5578faf7d468fb" violated (actual: "00b529f22d8e6f31e89b4cad783efadce90cd1d2")
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "40152d2679ed32209edf9a721dd6321f810c810c" violated (actual: "00b529f22d8e6f31e89b4cad783efadce90cd1d2")
+    extensions.authorityKeyIdentifier.keyIdentifier:value_hex_eq_violated @ extensions.4.extnValue.AuthorityKeyIdentifier.keyIdentifier : valueHexEq "696529f933f809b642d5e1f3b5b59d1f5f7a227c" violated (actual: "00b529f22d8e6f31e89b4cad783efadce90cd1d2")
+    extensions.crlDistributionPoints.distributionPoints(0):required_member_not_found @ extensions.8.extnValue.CRLDistributionPoints : required member "extensions.crlDistributionPoints.distributionPoints(0)" not found
+    issuer.commonName:value_match_violated @ issuer.2.0.value : valueMatch "^YR[1-3]$" violated (actual: "R12")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595231" violated (actual: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303523132")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595232" violated (actual: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303523132")
+    issuer:tlv_hex_eq_violated @ issuer : tlvHexEq "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303595233" violated (actual: "3033310b300906035504061302555331163014060355040a130d4c6574277320456e6372797074310c300a06035504031303523132")
